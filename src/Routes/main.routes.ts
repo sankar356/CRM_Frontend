@@ -22,6 +22,10 @@ export const MAIN_ROUTE: Routes = [
         component: DashboardComponent
       },
       {
+        path: 'dashboard',
+        component: DashboardComponent
+      },
+      {
         path : 'staffs',
         component : StaffsComponent
       },
