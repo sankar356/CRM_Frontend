@@ -1,0 +1,80 @@
+.login {
+    font-family: 'Arial', sans-serif;
+    background: white;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-position: center;
+    background-size: cover;
+    background-image: url("/assets/images/login/login.png");
+}
+
+.container {
+    background-color: #ffffffad;
+    border-radius: 35px;
+    padding: 40px;
+    box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgb(50 50 93 / 0%) 0px 50px 100px -20px, rgb(0 0 0 / 6%) 0px 30px 60px -30px;
+    width: 325px;
+    text-align: center;
+    border: 3px solid #f9f918;
+}
+
+h2 {
+    color: #333;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 10px 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #f5a623;
+    color: #fff;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.social-login {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.social-login button {
+    background-color: transparent;
+    border: 1px solid #ccc;
+    margin: 0 5px;
+}
+
+.social-login img {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+
+.globe-container {
+    width: 400px;
+    height: 400px;
+    // background-color: white; /* Change the background color as needed */
+    border: 1px solid #ccc;
+  }
+
+  .fbx-container { width: 100%; height: 500px; }
+
+  #canvas {
+    width: 100vw; /* Full width */
+    height: 100vh; /* Full height */
+    display: block; /* Ensures the canvas takes up the space */
+}

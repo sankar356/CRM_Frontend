@@ -1,0 +1,154 @@
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.header h1 {
+    font-size: 36px;
+    font-weight: 300;
+}
+.header .balance {
+    font-size: 24px;
+    font-weight: 700;
+}
+.tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+.tabs button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    background: #E0E0E0;
+    font-size: 16px;
+    cursor: pointer;
+}
+.tabs button.active {
+    background: #333;
+    color: #fff;
+}
+.cards {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+.card {
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    flex: 1;
+    min-width: 300px;
+}
+.card.dark {
+    background: #333;
+    color: #fff;
+}
+.card.light {
+    background: #fff;
+}
+.card.green {
+    background: #D4FF00;
+}
+.card.blue {
+    background: #00E0FF;
+}
+.card h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+.card .invoice-id {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 10px;
+    background: #00E0FF;
+    color: #fff;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+.card .invoice-id.dark {
+    background: #D4FF00;
+    color: #333;
+}
+.card .details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.card .details .date {
+    font-size: 14px;
+}
+.card .details .priority {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.card .details .priority span {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+.card .details .priority .high {
+    background: #FF0000;
+}
+.card .details .priority .low {
+    background: #00FF00;
+}
+.card .amounts {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.card .amounts .total,
+.card .amounts .balance {
+    font-size: 24px;
+    font-weight: 700;
+}
+.card .payments,
+.card .subscriptions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.card .payments .payment,
+.card .subscriptions .subscription {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.2);
+}
+.card .payments .payment .method,
+.card .subscriptions .subscription .type {
+    font-size: 14px;
+}
+.card .payments .payment .amount,
+.card .subscriptions .subscription .amount {
+    font-size: 18px;
+    font-weight: 700;
+}
+.card .payments .payment .status,
+.card .subscriptions .subscription .status {
+    font-size: 14px;
+    font-weight: 500;
+}
+.card .payments .payment .status span,
+.card .subscriptions .subscription .status span {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 10px;
+    background: #00FF00;
+    color: #333;
+}
+.card .payments .payment .status span.cancel {
+    background: #FF0000;
+    color: #fff;
+}
