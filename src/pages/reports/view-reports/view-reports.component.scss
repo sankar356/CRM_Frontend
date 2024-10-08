@@ -1,0 +1,8 @@
+.relative {
+    position: relative;
+  }
+  
+  canvas {
+    width: 100% !important; /* Ensures the canvas fills the width */
+    height: auto !important; /* Maintains aspect ratio */
+  }

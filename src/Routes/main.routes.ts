@@ -9,6 +9,9 @@ import { TaskComponent } from "../pages/task/task.component";
 import { NotificationComponent } from "../pages/notification/notification.component";
 import { ReportsComponent } from "../pages/reports/reports.component";
 import { SettingsComponent } from "../pages/settings/settings.component";
+import { ViewReportsComponent } from "../pages/reports/view-reports/view-reports.component";
+import path from "path";
+
 
 export const MAIN_ROUTE: Routes = [
   {
@@ -22,32 +25,33 @@ export const MAIN_ROUTE: Routes = [
         component: DashboardComponent
       },
       {
-        path: 'dashboard',
-        component: DashboardComponent
+        path : 'dashboard',
+        loadChildren: () => import('../pages/dashboard/dashboard.route').then((m) => m.DASHBOARD_ROUTE ),
       },
       {
         path : 'staffs',
-        component : StaffsComponent
-      },
-      {
-        path : 'lead',
-        component : LeadsComponent
+        loadChildren: () => import('../pages/staffs/staffs.route').then((m) => m.STAFF_ROUTE ),
       },
       {
         path : 'task',
-        component : TaskComponent
-      },
-      {
-        path : 'notifications',
-        component : NotificationComponent
+        loadChildren: () => import('../pages/task/task.route').then((m) => m.TASK_ROUTE ),
       },
       {
         path : 'reports',
-        component : ReportsComponent
+        loadChildren: () => import('../pages/reports/reports.route').then((m) => m.REPORT_ROUTE ),
+      },
+      {
+        path : 'notifications',
+        loadChildren: () => import('../pages/notification/notification.route').then((m) => m.NOTIFICATION_ROUTE ),
+      },
+      {
+        path : 'lead',
+        loadChildren: () => import('../pages/leads/lead.route').then((m) => m.LEAD_ROUTE ),
       },
       {
         path : 'settings',
-        component : SettingsComponent
-      }
+        loadChildren: () => import('../pages/settings/settings.route').then((m) => m.SETTINGS_ROUTE ),
+      },
     ],
-  }]
+  }
+]

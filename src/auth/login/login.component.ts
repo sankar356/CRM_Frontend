@@ -48,6 +48,6 @@ export class LoginComponent {
 
   submit() {
    console.log("submitting")
- this.router.navigateByUrl('mainroute');
+ this.router.navigateByUrl('crm');
   }
 }
