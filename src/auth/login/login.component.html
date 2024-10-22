@@ -1,14 +1,43 @@
-<div class="login">
+<!-- <app-header></app-header> -->
+<div *ngIf="showLoginPage" class="login" id="login">
 
     <div class="container">
-        <h2>Agent Login</h2>
+        <h2><strong>User Login</strong></h2>
         <p>Hey, Enter your details to get sign in to your account</p>
  
-            <input type="text" placeholder="Enter Email / Phone No">
-            <input type="password" placeholder="Passcode">
-            <button (click)="submit()">Sign in</button>
-      
+            <input type="text" [(ngModel)]="loginObj.email" name="emailId" placeholder="Enter Email / Phone No">
+            <input type="password" [(ngModel)]="loginObj.password" name="password" placeholder="password">
+            <button class="w-full bg-blue-600 text-white font-semibold py-2 rounded-md hover:bg-blue-700 transition duration-200" (click)="submit()">Send Otp</button>
+            <a href="#" (click)="goToCreateAccount()" class="text-blue-600 hover:text-blue-800 focus:outline-none focus:ring focus:ring-blue-300"> Create an
+              Account</a>
     </div>
 </div>
 
-<!-- <canvas #characterCanvas id="canvas"></canvas> -->
+<div *ngIf="!showLoginPage && showOtpVerification && !showCreateAccount" class="login" id="otp">
+
+  <div class="container">
+      <h2>Login Otp</h2>
+      <p>Hey, Enter the otp to get sign in to your account</p>
+
+          <input type="text" [(ngModel)]="loginObj.email" name="emailId" placeholder="Enter Email / Phone No">
+          <input type="number" [(ngModel)]="loginObj.code" name="code" placeholder="code"
+           class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-500">
+          <button class="w-full bg-blue-600 text-white font-semibold py-2 rounded-md hover:bg-blue-700 transition duration-200" (click)="submitOtp()">Log in</button>
+  </div>
+</div>
+
+<div *ngIf="!showLoginPage && !showOtpVerification && showCreateAccount" class="login" id="register">
+
+  <div class="container">
+      <h2>Login Otp</h2>
+      <p>Hey, Enter the otp to get sign in to your account</p>
+          <input type="text" [(ngModel)]="loginObj.firstName" name="firstName" placeholder="Enter FirstName">
+          <input type="text" [(ngModel)]="loginObj.lastName" name="lastName" placeholder="Enter LastName ">
+          <input type="text" [(ngModel)]="loginObj.phoneNumber" name="phoneNumber" placeholder="Enter PhoneNumber ">
+          <input type="text" [(ngModel)]="loginObj.email" name="emailId" placeholder="Enter Email">
+          <input type="password" [(ngModel)]="loginObj.password" name="password" placeholder="Enter password ">
+         <button class="w-full bg-blue-600 text-white font-semibold py-2 rounded-md hover:bg-blue-700 transition duration-200" (click)="createNewAccount()">Log in</button>
+  </div>
+</div>
+
+

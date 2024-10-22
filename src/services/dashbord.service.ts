@@ -8,7 +8,7 @@ import { environment } from '../environments/environment';
   providedIn: 'root'
 })
 export class DashbordService {
-  private loginEndPoint = `${environment.apiUrl}/user`;
+  private userEndPoint = `${environment.apiUrl}/user`;
   // private verifyOtpEndPoint = `/api/v1/auth/user/verifyOtp`;
   // private createAccountEndPoint = `/api/v1/auth/user/signup`;
   // private forgotPasswordEndPoint = `/api/v1/auth/user/forgotPassword`;
@@ -22,7 +22,7 @@ export class DashbordService {
   ) { }
 
   login(data: any): Observable<any> {
-    return this.http.get<any>(`${this.loginEndPoint}`, data);
+    return this.http.get<any>(`${this.userEndPoint}`, data);
   }
 
   // otpVerify(data: any): Observable<any> {

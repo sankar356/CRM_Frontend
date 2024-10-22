@@ -17,13 +17,13 @@ export class TaskComponent implements OnInit{
     private taskService : TaskService
   ){}
   ngOnInit(): void {
-      this.getTask()
+      // this.getTask()
   }
-  getTask(): void{
-    this.taskService.getTask().subscribe({
-      next :(res:any) =>{
-        console.log("task"+res)
-      }
-    })
-  }
+  // getTask(): void{
+  //   this.taskService.getTask().subscribe({
+  //     next :(res:any) =>{
+  //       console.log("task"+res)
+  //     }
+  //   })
+  // }
 }

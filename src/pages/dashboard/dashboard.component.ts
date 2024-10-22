@@ -32,25 +32,25 @@ export class DashboardComponent implements OnInit {
   }
 
   getcount(): void {
-      this.dashboardService.getDataList().subscribe({
-        next : (res : any) => {
-          console.log("dashboardService" + res)
-        }
-      })
-    //   this.http.get('http://localhost:8000/api/v1/organization').subscribe({
-    //   next: (coun: any) => {
-    //     // console.log(coun);
-    //     this.coun = coun;
-    //   },
-    //   error: (err) => {
-    //     console.error('Error fetching coun:', err);
-    //   }
-    // });
+      // this.dashboardService.getDataList().subscribe({
+      //   next : (res : any) => {
+      //     console.log("dashboardService" + res)
+      //   }
+      // })
+      this.http.get('http://localhost:8080/api/v1/organization').subscribe({
+      next: (coun: any) => {
+        // console.log(coun);
+        this.coun = coun;
+      },
+      error: (err) => {
+        console.error('Error fetching coun:', err);
+      }
+    });
   }
 
   getLead(): void {
     // this.http.get(`${environment.apiUrl}api/v1/auth/user`).subscribe({
-      this.http.get('http://localhost:8000/api/v1/staffs').subscribe({
+      this.http.get('http://localhost:8080/api/v1/staffs').subscribe({
       next: (data: any) => {
         // console.log(data);
         this.data = data;

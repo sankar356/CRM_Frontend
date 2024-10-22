@@ -15,7 +15,7 @@ export const canActivate: CanActivateFn = (
     const router = inject(Router);
   
   
-    return authService.checkLogin().pipe(
+    return authService.login().pipe(
       map(() => true),
       catchError((err: any) => {
           return of(router.createUrlTree(['/']));

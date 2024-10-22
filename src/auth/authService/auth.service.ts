@@ -1,24 +1,26 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private   isLoggedInSubject = new BehaviorSubject<boolean>(false);
-  isLoggedIn$ = this.isLoggedInSubject.asObservable();   
+  private loginEndPoint = `${environment.apiUrl}auth/user/login`;
+  private loginOtpEndPoint = `${environment.apiUrl}auth/user/verifyOtp`;
+  private signupEndPoint = `${environment.apiUrl}auth/user/signup`;
 
-  login() {
-    this.isLoggedInSubject.next(true);
+  constructor(
+    private http:HttpClient,
+  ) { }
+  login(credentials?: { email: string; password: string }): Observable<any> {
+    return this.http.post<any>(this.loginEndPoint,credentials);
   }
-
-  logout() {
-    this.isLoggedInSubject.next(false);
+  loginOtp(credentials?: { email: string; code: number}): Observable<any> {
+    return this.http.post<any>(this.loginOtpEndPoint,credentials);
   }
-
-  checkLogin(): Observable<boolean> {
-    return this.isLoggedIn$; 
+  signUp(credentials?: { email: string; code: number}): Observable<any> {
+    return this.http.post<any>(this.signupEndPoint,credentials);
   }
-
-  
 }

@@ -1,0 +1,17 @@
+.profile-image-bg {
+    width: 140%;
+    height: 110%;
+    margin-left: -18%;
+    background-image: url('../../../assets/images/sampleImage/504-5040528_empty-profile-picture-png-transparent-png.png');
+    background-size: cover;   // Ensures the image covers the entire div while maintaining aspect ratio
+    background-position: center; // Centers the image in the div
+    border-radius: 5%;  // Makes the div circular
+  }
+
+ .profile-image{
+    width: 117%;
+    margin-bottom: +2%;
+    margin-left: -15%;
+    height: 38%;
+    
+}
