@@ -7,5 +7,5 @@ import { ViewleadsComponent } from "./viewleads/viewleads.component";
 export const LEAD_ROUTE: Routes = [
     { path: '', component: LeadsComponent },
     {path:'creatlead', component:AddleadComponent},
-    {path:'viewlead', component:ViewleadsComponent},
+    {path:'viewlead/:id', component:ViewleadsComponent},
 ]

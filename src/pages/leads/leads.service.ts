@@ -28,8 +28,8 @@ export class LeadsService {
   addLead(lead?:Lead):Observable<any>{
     return this.http.post<any[]>(`${this.postGetLeadEndPoint}`,lead)
   }
-  getLeadById(id: number): Observable<any> {
-    return this.http.get<any>(`${this.getLeadByIdEndPoint}` + id);
+  getLeadById(id: number): Observable<Lead> {
+    return this.http.get<Lead>(`${this.getLeadByIdEndPoint}${id}/`);
   }
   updateLead(data: any, leadId: any): Observable<any> {
     return this.http.put<any>(`${this.updateLeadEndPoint}` + leadId, data);

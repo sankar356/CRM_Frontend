@@ -1,0 +1,106 @@
+.list-heading {
+    font-size: 22px !important;
+    font-weight: 700;
+    font-family: "Inter" !important;
+    margin-bottom: 0px !important;
+  }
+
+  .form_section_title {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 19px;
+    color: #4094f7;
+  }
+
+  .label_style {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 20px;
+  }
+
+  main {
+    padding: 50px;
+    margin: 0 auto;
+    background: #fff;
+  }
+  
+  section {
+    display: none;
+    padding: 20px 0 0;
+    border-top: 1px solid #ddd;
+  }
+  
+  input {
+    display: none;
+  }
+
+  .tab_design {
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  }  
+  
+  label.tab-lable {
+    display: inline-block;
+    margin: 0 0 -1px;
+    padding: 15px 25px;
+    font-weight: 600;
+    text-align: center;
+    color: #bbb;
+    border: 1px solid transparent;
+  }
+  
+  label.tab-lable:before {
+    font-family: fontawesome;
+    font-weight: normal;
+    margin-right: 10px;
+  }
+  
+  label.tab-lable:hover {
+    color: #888;
+    cursor: pointer;
+  }
+  
+  input:checked + label.tab-lable {
+    color: #555;
+    border: 1px solid #ddd;
+    border-top: 2px solid #4094f7;
+    border-bottom: 1px solid #fff;
+  }
+  
+  #tab1:checked ~ #content1,
+  #tab2:checked ~ #content2,
+  #tab3:checked ~ #content3,
+  #tab4:checked ~ #content4 {
+    display: block;
+  }
+  
+  @media screen and (max-width: 650px) {
+    label.tab-lable {
+      font-size: 0;
+    }
+  
+    label.tab-lable:before {
+      margin: 0;
+      font-size: 18px;
+    }
+  }
+  @media screen and (max-width: 400px) {
+    label.tab-lable {
+      padding: 15px;
+    }
+  }
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .fade-in {
+    animation: fadeIn 1s ease forwards; /* 1s duration */
+    animation-delay: 0s; /* 1s delay */
+  }
+  

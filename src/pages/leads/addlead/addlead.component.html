@@ -1,8 +1,8 @@
-<h1 class="text-3xl font-bold mb-6">Add Lead</h1>
+<h1 class="text-3xl fade-in font-bold mb-6">Add Lead</h1>
 <form [formGroup]="addLeadsForm" (ngSubmit)="onSubmit()">
-  <div class="flex">
-    <div class="flex flex-wrap w-3/4 gap-6 mb-6">
-    <div class=" w-[45%] flex flex-col">
+  <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
+    <div class=" order-2 md:col-span-3 grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div class="flex flex-col">
       <label for="firstName" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">First Name</label>
       <div class="flex">
       
@@ -28,7 +28,7 @@
         <span class="text-red-500">Please fill the First Name.</span>
       </div>
     </div>
-    <div class="w-[45%] flex flex-col">
+    <div class="flex flex-col">
       <label for="lastName" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Last Name</label>
       <input type="text" id="lastName" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" formControlName="lastName" placeholder="Doe" required />
       <div *ngIf="addLeadsForm.controls['lastName'].invalid && (addLeadsForm.controls['lastName'].touched || submitted)">
@@ -36,7 +36,7 @@
       </div>
     </div>
 
-    <div class="w-[45%] flex flex-col">
+    <div class="flex flex-col">
       <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
       <input type="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" formControlName="email" placeholder="john.doe@example.com" required />
       <div *ngIf="addLeadsForm.controls['email'].invalid && (addLeadsForm.controls['email'].touched || submitted)">
@@ -44,7 +44,7 @@
       </div>
     </div>
 
-    <div class="w-[45%] flex flex-col">
+    <div class="flex flex-col">
       <label for="mobileNumber" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Mobile Number</label>
       <div class="flex">
         
@@ -55,12 +55,13 @@
           required>
           <option value="" disabled>Select</option>
           <option *ngFor="let country of code" [value]="country.id">
-            {{ country.phonecode }}
+           {{country.shortname}} ({{ country.phonecode }})
           </option>
         </select>
        
         <input
           type="tel"
+          maxlength="10"
           id="mobileNumber"
           formControlName="mobileNumber"
           class="bg-gray-50 border border-l-0 border-gray-300 text-gray-900 text-sm rounded-r-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
@@ -71,7 +72,7 @@
         <span class="text-red-500">Please enter a valid Mobile Number.</span>
       </div>
     </div>
-    <div class="w-[45%] flex flex-col">
+    <div class="flex flex-col">
       <label for="jobTitle" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Job Title</label>
       <input type="text" id="jobTitle" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" formControlName="jobTitle" placeholder="Manager" required />
       <div *ngIf="addLeadsForm.controls['jobTitle'].invalid && (addLeadsForm.controls['jobTitle'].touched || submitted)">
@@ -79,7 +80,7 @@
       </div>
     </div>
 
-    <div class="w-[45%] flex flex-col">
+    <div class="flex flex-col">
       <label for="organization" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Organization</label>
       <input type="text" id="organization" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" formControlName="organization" placeholder="Company Name" required />
       <div *ngIf="addLeadsForm.controls['organization'].invalid && (addLeadsForm.controls['organization'].touched || submitted)">
@@ -87,7 +88,7 @@
       </div>
     </div>
 
-    <div class="w-[45%] flex flex-col">
+    <div class="flex flex-col">
       <label for="department" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Department</label>
       <input type="text" id="department" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" formControlName="department" placeholder="Sales" required />
       <div *ngIf="addLeadsForm.controls['department'].invalid && (addLeadsForm.controls['department'].touched || submitted)">
@@ -95,38 +96,50 @@
       </div>
     </div>
 
-    <div class="w-[45%] flex flex-col">
-      <label for="employee" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Employee Number</label>
+    <div class="flex flex-col">
+      <label for="employee" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Number OF Employee</label>
       <input type="text" id="employee" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" formControlName="employee" placeholder="12345" required />
       <div *ngIf="addLeadsForm.controls['employee'].invalid && (addLeadsForm.controls['employee'].touched || submitted)">
-        <span class="text-red-500">Please fill the valid Employee Number.</span>
+        <span class="text-red-500">Please fill the Number Of Employee.</span>
       </div>
     </div>
 
-    <div class="w-[45%] flex flex-col">
-      <label for="countryCodeOffice" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Office Country Code</label>
-      <input type="text" id="countryCodeOffice" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" formControlName="countryCodeOffice" placeholder="+1" required />
-      <div *ngIf="addLeadsForm.controls['countryCodeOffice'].invalid && (addLeadsForm.controls['countryCodeOffice'].touched || submitted)">
-        <span class="text-red-500">Please fill the valid countryCodeOffice .</span>
-      </div>
-    </div>
-
-    <div class="w-[45%] flex flex-col">
+    <div class="flex flex-col">
       <label for="officePhone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Office Phone</label>
-      <input type="tel" id="officePhone" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" formControlName="officePhone" placeholder="098765434" required />
+      <div class="flex">
+        <select
+          id="countryCodeOffice"
+          formControlName="countryCodeOffice"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-l-lg focus:ring-blue-500 focus:border-blue-500 block w-20 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          required>
+          <option value="" disabled>Select</option>
+          <option *ngFor="let country of code" [value]="country.id">
+            {{country.shortname}} ({{ country.phonecode }})
+           </option>
+        </select>
+    
+        <input
+          type="tel"
+          id="officePhone"
+          maxlength="10"
+          formControlName="officePhone"
+          class="bg-gray-50 border border-l-0 border-gray-300 text-gray-900 text-sm rounded-r-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+          placeholder="098765434"
+          required />
+      </div>
       <div *ngIf="addLeadsForm.controls['officePhone'].invalid && (addLeadsForm.controls['officePhone'].touched || submitted)">
-        <span class="text-red-500">Please fill the valid Office Phone .</span>
+        <span class="text-red-500">Please fill a valid Office Phone.</span>
       </div>
     </div>
-
-    <div class="w-[45%] flex flex-col">
+    
+    <div class="flex flex-col">
       <label for="alternateEmail" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Alternate Email</label>
       <input type="email" id="alternateEmail" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" formControlName="alternateEmail" placeholder="alternate@example.com" required />
       <div *ngIf="addLeadsForm.controls['alternateEmail'].invalid && (addLeadsForm.controls['alternateEmail'].touched || submitted)">
         <span class="text-red-500">Please fill the valid Alternate Email.</span>
       </div>
     </div>
-    <div class="w-[45%] flex flex-col">
+    <div class="flex flex-col">
       <label for="leadSource" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Lead Source</label>
       <input type="text" id="leadSource" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" formControlName="leadSource" required />
       <div *ngIf="addLeadsForm.controls['leadSource'].invalid && (addLeadsForm.controls['leadSource'].touched || submitted)">
@@ -134,7 +147,7 @@
       </div>
     </div>
 
-    <div class="w-[45%] flex flex-col">
+    <div class="flex flex-col">
       <label for="leadStatus" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Lead Status</label>
       <input type="text" id="leadStatus" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" formControlName="leadStatus" required />
       <div *ngIf="addLeadsForm.controls['leadStatus'].invalid && (addLeadsForm.controls['leadStatus'].touched || submitted)">
@@ -142,28 +155,24 @@
       </div>
     </div>
   </div>
-  <div class="flex flex-wrap w-1/4 gap-6 mb-6">
-    <div class="mx-24">
-      <div class=" w-5/6 h-4/5 ">
-        <label for="profileImg" class="block mb-2 text-sm -ml-6 font-semibold text-gray-900 dark:text-white">
-          profile Image</label>
-        <input class="profile-image-bg" type="file" id="profileImg" formControlName="profileImg">
-      </div>
-    </div>
-    <div class="flex flex-col w-full">
-      <label for="comments" class="block mb-2 -ml-14 text-sm font-medium text-gray-900 dark:text-white">Comments</label>
-      <textarea
-        id="comments"
-        formControlName="comments"
-        class="bg-gray-50 border profile-image border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
-        rows="4"
-        placeholder="Enter your comments here..."
-        required></textarea>
-      <div *ngIf="addLeadsForm.controls['comments'].invalid && (addLeadsForm.controls['comments'].touched || submitted)">
-        <span class="text-red-500">Please enter your comments.</span>
-      </div>
-    </div>
-  </div>
+  <div class="order-1 md:col-span-1 flex flex-col items-center md:order-2">
+       <div class="flex flex-col items-center">
+         <label for="profileImg" class="block mb-2 text-sm font-semibold text-gray-900 dark:text-white">Profile Image</label>
+         <label for="profileImg" class="cursor-pointer">
+           <div class="w-44 h-56 bg-cover bg-center rounded" style="background-image: url('../../../assets/images/sampleImage/avatar-659652_640.webp');">
+             <input type="file" id="profileImg" formControlName="profileImg" class="hidden">
+           </div>
+         </label>
+       </div>
+ 
+       <div class="w-full mt-8">
+         <label for="comments" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Comments</label>
+         <textarea id="comments" formControlName="comments" class="w-full p-2.5 rounded-lg border bg-gray-50 border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" rows="4" placeholder="Enter your comments here..." required></textarea>
+         <div *ngIf="addLeadsForm.controls['comments'].invalid && (addLeadsForm.controls['comments'].touched || submitted)">
+           <span class="text-red-500">Please enter your comments.</span>
+         </div>
+       </div>
+     </div>
   </div><br>
 
 
@@ -368,3 +377,116 @@
   <button type="submit" class="text-white bg-blue-600 hover:bg-blue-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Submit</button>
 </form>
 
+
+
+<!-- <h1 class="text-3xl fade-in font-bold mb-6">Add Lead</h1>
+ <form [formGroup]="addLeadsForm" (ngSubmit)="onSubmit()">
+   <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
+     <div class="order-2 md:col-span-3 grid grid-cols-1 md:grid-cols-2 gap-6">
+       
+       <div class="flex flex-col">
+         <label for="firstName" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">First Name</label>
+         <div class="flex">
+           <select id="namePrefix" formControlName="namePrefix" class="w-1/4 p-2.5 rounded-l-lg border" required>
+             <option value="" disabled>Select</option>
+             <option *ngFor="let prefix of namePrefixes" [value]="prefix">{{ prefix }}</option>
+           </select>
+           <input id="firstName" formControlName="firstName" class="w-3/4 p-2.5 rounded-r-lg border" placeholder="John" required />
+         </div>
+         <div *ngIf="addLeadsForm.controls['firstName'].invalid && (addLeadsForm.controls['firstName'].touched || submitted)">
+           <span class="text-red-500">Please fill the First Name.</span>
+         </div>
+       </div>
+ 
+       <div class="flex flex-col">
+         <label for="lastName" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Last Name</label>
+         <input id="lastName" formControlName="lastName" class="w-full p-2.5 rounded-lg border" placeholder="Doe" required />
+         <div *ngIf="addLeadsForm.controls['lastName'].invalid && (addLeadsForm.controls['lastName'].touched || submitted)">
+           <span class="text-red-500">Please fill the Last Name.</span>
+         </div>
+       </div>
+ 
+       <div class="flex flex-col">
+         <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
+         <input id="email" type="email" formControlName="email" class="w-full p-2.5 rounded-lg border" placeholder="john.doe@example.com" required />
+         <div *ngIf="addLeadsForm.controls['email'].invalid && (addLeadsForm.controls['email'].touched || submitted)">
+           <span class="text-red-500">Please enter a valid email address.</span>
+         </div>
+       </div>
+ 
+       <div class="flex flex-col">
+         <label for="mobileNumber" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Mobile Number</label>
+         <div class="flex">
+           <select id="countryCodeMobile" formControlName="countryCodeMobile" class="w-1/4 p-2.5 rounded-l-lg border" required>
+             <option value="" disabled>Select</option>
+             <option *ngFor="let country of code" [value]="country.id">{{country.shortname}} ({{ country.phonecode }})</option>
+           </select>
+           <input id="mobileNumber" type="tel" formControlName="mobileNumber" class="w-3/4 p-2.5 rounded-r-lg border" placeholder="123-456-7890" required />
+         </div>
+         <div *ngIf="addLeadsForm.controls['mobileNumber'].invalid && (addLeadsForm.controls['mobileNumber'].touched || submitted)">
+           <span class="text-red-500">Please enter a valid Mobile Number.</span>
+         </div>
+       </div>
+ 
+       <div class="flex flex-col">
+         <label for="jobTitle" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Job Title</label>
+         <input id="jobTitle" formControlName="jobTitle" class="w-full p-2.5 rounded-lg border" placeholder="Manager" required />
+         <div *ngIf="addLeadsForm.controls['jobTitle'].invalid && (addLeadsForm.controls['jobTitle'].touched || submitted)">
+           <span class="text-red-500">Please fill the Job Title.</span>
+         </div>
+       </div>
+ 
+ 
+     </div>
+ 
+     <div class="order-1 md:col-span-1 flex flex-col items-center md:order-2">
+       <div class="flex flex-col items-center">
+         <label for="profileImg" class="block mb-2 text-sm font-semibold text-gray-900 dark:text-white">Profile Image</label>
+         <label for="profileImg" class="cursor-pointer">
+           <div class="w-32 h-32 bg-cover bg-center rounded-full" style="background-image: url('../../../assets/images/sampleImage/avatar-659652_640.webp');">
+             <input type="file" id="profileImg" formControlName="profileImg" class="hidden">
+           </div>
+         </label>
+       </div>
+ 
+       <div class="w-full mt-4">
+         <label for="comments" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Comments</label>
+         <textarea id="comments" formControlName="comments" class="w-full p-2.5 rounded-lg border" rows="4" placeholder="Enter your comments here..." required></textarea>
+         <div *ngIf="addLeadsForm.controls['comments'].invalid && (addLeadsForm.controls['comments'].touched || submitted)">
+           <span class="text-red-500">Please enter your comments.</span>
+         </div>
+       </div>
+     </div>
+   </div>
+ 
+   <h1 class="text-2xl font-bold mb-6">Address</h1>
+   <div>
+     <h1 class="text-xl font-bold mb-6">Primary Address</h1>
+     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+       <div>
+         <label for="primaryAddress1" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Address Line 1</label>
+         <input id="primaryAddress1" formControlName="primaryAddress1" class="w-full p-2.5 rounded-lg border" placeholder="123 Main St" required />
+         <div *ngIf="addLeadsForm.controls['primaryAddress1'].invalid && (addLeadsForm.controls['primaryAddress1'].touched || submitted)">
+           <span class="text-red-500">Please fill the Address Line 1.</span>
+         </div>
+       </div>
+ 
+       <div>
+         <label for="primaryAddress2" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Address Line 2</label>
+         <input id="primaryAddress2" formControlName="primaryAddress2" class="w-full p-2.5 rounded-lg border" placeholder="Apartment, Suite, etc." />
+       </div>
+ 
+       <div>
+         <label for="country1" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Country</label>
+         <select id="country1" formControlName="country1" class="w-full p-2.5 rounded-lg border" required>
+           <option value="" disabled>Select Country</option>
+           <option *ngFor="let country of countryList" [value]="country.id">{{ country.name }}</option>
+         </select>
+         <div *ngIf="addLeadsForm.controls['country1'].invalid && (addLeadsForm.controls['country1'].touched || submitted)">
+           <span class="text-red-500">Please fill the Country1.</span>
+         </div>
+       </div>
+     </div>
+   </div>
+ </form> -->
+ 

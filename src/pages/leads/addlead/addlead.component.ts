@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { NamePrefix } from '../../../shared/method/enums';
+import { countries, CountryCode, NamePrefix } from '../../../shared/method/enums';
 import { AddressService } from '../../../services/address.service';
 const webUrlRegex = "(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?";
 @Component({
@@ -12,9 +12,14 @@ const webUrlRegex = "(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?";
   styleUrl: './addlead.component.scss'
 })
 export class AddleadComponent {
+// onFileSelected($event: Event) {
+// throw new Error('Method not implemented.');
+// }
   addLeadsForm! :FormGroup;
   data :any[] = []
   namePrefixes = Object.values(NamePrefix);
+  countryCodelist = countries;
+  countryCode = Object.values(CountryCode);
   countrys = Object.values(this.data);
   countryList : Array<any> = [];
   stateList :Array<any> = [];
@@ -23,6 +28,8 @@ export class AddleadComponent {
   selectedCountryId: any
   selectedStateId: any
   submitted = false;
+  // fileInput: any;
+  // isLoading: boolean = true;
 constructor(
   public addressService : AddressService
 ){
@@ -53,6 +60,7 @@ constructor(
       Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')
     ]),
     primaryAddress1: new FormControl('', [Validators.required]),
+    comments: new FormControl('', [Validators.required]),
     secondaryAddress1: new FormControl('', [Validators.required]),
     city1: new FormControl('', [Validators.required]),
     // postalCode1: new FormControl('', [Validators.required]),
@@ -79,9 +87,16 @@ constructor(
 ngOnInit(): void {
   this.getCountrys();
   // this.getState();
+  // this.loadData()
   this.getCountryCode();
 }
  
+// loadData() {
+//   setTimeout(() => {
+//     this.isLoading = false; 
+//   }, 5000); 
+// }
+
 onSubmit(): void {
   this.submitted = true;
   const isFormValid = this.addLeadsForm.valid;
@@ -148,6 +163,9 @@ getCity(stateId: string): void {
     }
   );
 }
-}
+// triggerFileInput(): void {
+//   this.fileInput.nativeElement.click();
+// }
 
+}
 

@@ -1,12 +1,20 @@
+// .profile-image-bg {
+//     width: 100%;
+//     height: 98%;
+//     margin-left: -10%;
+//     margin-top: -5%;
+//     background-image: url('https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/sofia-mcguire.png');
+//     background-size: cover;   // Ensures the image covers the entire div while maintaining aspect ratio
+//     background-position: center; // Centers the image in the div
+//     border-radius: 5%;  // Makes the div circular
+//   }
 .profile-image-bg {
-    width: 140%;
-    height: 110%;
-    margin-left: -18%;
-    background-image: url('../../../assets/images/sampleImage/504-5040528_empty-profile-picture-png-transparent-png.png');
-    background-size: cover;   // Ensures the image covers the entire div while maintaining aspect ratio
-    background-position: center; // Centers the image in the div
-    border-radius: 5%;  // Makes the div circular
-  }
+  width: 160px;
+  height: 230px; 
+  background-size: cover;   
+  background-position: center;
+  border-radius: 5%;  
+}
 
  .profile-image{
     width: 117%;
@@ -14,4 +22,23 @@
     margin-left: -15%;
     height: 38%;
     
+ }
+ .new {
+  width: 50%;
+  height: 45%;
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 1s ease forwards; /* 1s duration */
+  animation-delay: 0s; /* 1s delay */
 }

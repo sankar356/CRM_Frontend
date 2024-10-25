@@ -1,1 +1,11 @@
-<p>viewleads works!</p>
+
+<h2 class="text-xl fade-in font-bold text-left mb-4">Lead View</h2>
+
+<div *ngIf="leadData">
+  <p>Name: {{ leadData.Name }}</p>
+  <p>Email: {{ leadData.Email }}</p>
+  <p>Phone: {{ leadData.Phone }}</p>
+</div>
+<div *ngIf="!leadData">
+  <p>Loading lead data...</p>
+</div>

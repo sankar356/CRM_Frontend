@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { TableComponent } from '../../shared/table/table.component';
+import { CommonModule } from '@angular/common';
 
 
 @Component({
   selector: 'app-notification',
   standalone: true,
-  imports: [TableComponent],
+  imports: [TableComponent,CommonModule],
   templateUrl: './notification.component.html',
   styleUrl: './notification.component.scss'
 })
@@ -14,4 +15,14 @@ export class NotificationComponent {
     { name: 'John Doe', age: 25, email: 'john@example.com' },
     { name: 'Jane Doe', age: 28, email: 'jane@example.com' }
   ];
+
+  isDrawerOpen = false;
+
+  toggleDrawer() {
+    this.isDrawerOpen = !this.isDrawerOpen;
+  }
+
+  closeDrawer() {
+    this.isDrawerOpen = false;
+  }
 }
