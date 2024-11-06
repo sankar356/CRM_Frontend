@@ -1,5 +1,5 @@
-import { Component,EventEmitter, Output } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component,EventEmitter, Input, Output } from '@angular/core';
+import { ActivatedRoute, RouterLink, Router } from '@angular/router';
 import { LeadsService } from '../leads.service';
 import { AlertService } from '../../../services/alert.service';
 import { SettingsComponent } from '../../settings/settings.component';
@@ -8,12 +8,12 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-viewleads',
   standalone: true,
-  imports: [SettingsComponent,CommonModule],
+  imports: [SettingsComponent,CommonModule,RouterLink],
   templateUrl: './viewleads.component.html',
   styleUrl: './viewleads.component.scss'
 })
 export class ViewleadsComponent {
-  public editId: any;
+  @Input() editId: any;
   public leadData: any;
 
   // Output event emitter to receive lead ID from parent or another component
@@ -22,32 +22,34 @@ export class ViewleadsComponent {
   constructor(
     public leadService: LeadsService,
     public alertService: AlertService,
+    public router: Router,
   ) {}
-
-  ngOnInit(): void {
-    this.leadIdSelected.subscribe((id: number) => {
-      this.editId = id;
-      this.getLeadById(this.editId);
-      });
-      console.log(this.editId)
+  ngOnChanges(): void {
+    if (this.editId) {
+      this.getLeadById(this.editId.id);
+    }
+    console.log('id',this.editId)
   }
 
-  getLeadById(id: any) {
+  getLeadById(id: number) {
     this.leadService.getLeadById(id).subscribe(
-        (response: any) => {
-            // Check if response and response.data are defined
-            if (response && response.data) {
-                this.leadData = response.data;
-                console.log("LeadData:", this.leadData); // Log the lead data
-            } else {
-                console.error("Unexpected response structure:", response);
-                this.alertService.error('No lead data found.');
-            }
-        },
-        (error: any) => {
-            const msg = error.error?.message || 'Invalid Data!';
-            this.alertService.error(msg); // Handle error with alert service
-        },
+      (response: any) => {
+        if (response) { 
+          this.leadData = response; 
+          console.log("LeadData:", this.leadData);
+        } else {
+          console.error("Unexpected response structure:", response);
+          this.alertService.error('No lead data found.');
+        }
+      },
+      (error: any) => {
+        const msg = error.error?.detail || 'Invalid Data!'; 
+        this.alertService.error(msg);
+      }
     );
-}
+  }
+  editLead(row: any) {
+    console.log('edit lead :', row);
+    this.router.navigate([ 'edit_lead:',row]);
+  }
 }

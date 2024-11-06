@@ -1,11 +1,72 @@
-
-<h2 class="text-xl fade-in font-bold text-left mb-4">Lead View</h2>
+<!-- 
+<h2 class="text-xl fade-in font-bold text-left mb-4">Lead Preview</h2>
 
 <div *ngIf="leadData">
-  <p>Name: {{ leadData.Name }}</p>
-  <p>Email: {{ leadData.Email }}</p>
-  <p>Phone: {{ leadData.Phone }}</p>
+  <p>Name: {{ leadData.firstName}} {{leadData.lastName}}</p>
+  <p>Email: {{ leadData.email }}</p>
+  <p>Phone: {{ leadData.mobileNumber }}</p>
 </div>
 <div *ngIf="!leadData">
   <p>Loading lead data...</p>
+</div> -->
+<div class="container mx-auto p-3 bg-gray-50 dark:bg-gray-900">
+  <div class=" shadow rounded-lg overflow-hidden">
+    <div class="p-5 border-b">
+      <h2 class="text-2xl font-bold ">Lead Details</h2>
+      <p class="text-gray-600">View all information related to this lead.</p>
+      <!-- <button  class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition" (click)="editLead(leadData.id)">Edit Lead</button> -->
+
+    </div>
+    
+    <div class="p-5">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class=" p-4 rounded-lg">
+          <h3 class="text-lg font-semibold ">Basic Information</h3>
+          <p><strong>Name Prefix:</strong> {{ leadData?.namePrefix }}</p>
+          <p><strong>Full Name:</strong> {{ leadData?.firstName }} {{ leadData?.lastName }}</p>
+          <p><strong>Job Title:</strong> {{ leadData?.jobTitle }}</p>
+          <p><strong>Organization:</strong> {{ leadData?.organization }}</p>
+          <p><strong>Account Name:</strong> {{ leadData?.accountName }}</p>
+          <p><strong>Employee Number:</strong> {{ leadData?.employeeNumber }}</p>
+          <p><strong>Website:</strong> <a href="{{ leadData?.website }}" target="_blank" class="text-blue-600 hover:underline">{{ leadData?.website }}</a></p>
+        </div>
+        
+        <div class=" p-4 rounded-lg">
+          <h3 class="text-lg font-semibold ">Contact Information</h3>
+          <p><strong>Email:</strong> <a href="mailto:{{ leadData?.email }}" class="text-blue-600 hover:underline">{{ leadData?.email }}</a></p>
+          <p><strong>Alternative Email:</strong> <a href="mailto:{{ leadData?.alternativeEmail }}" class="text-blue-600 hover:underline">{{ leadData?.alternativeEmail }}</a></p>
+          <p><strong>Office Phone:</strong> {{ leadData?.officePhone }}</p>
+          <p><strong>Mobile Number:</strong> {{ leadData?.mobileNumber }}</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+        <div class=" p-4 rounded-lg">
+          <h3 class="text-lg font-semibold">Lead Source</h3>
+          <p><strong>Source:</strong> {{ leadData?.leadSource }}</p>
+          <p><strong>Description:</strong> {{ leadData?.leadSourceDescription }}</p>
+          <p><strong>Referred By:</strong> {{ leadData?.referredBy }}</p>
+        </div>
+
+        <div class=" p-4 rounded-lg">
+          <h3 class="text-lg font-semibold ">Additional Information</h3>
+          <p><strong>Industry:</strong> {{ leadData?.industry }}</p>
+          <p><strong>Status:</strong> {{ leadData?.status }} ({{ leadData?.statusDescription }})</p>
+          <p><strong>Campaign:</strong> {{ leadData?.campaign }}</p>
+          <p><strong>Opportunity Amount:</strong> ${{ leadData?.opportunityAmount }}</p>
+          <p><strong>Assigned To:</strong> {{ leadData?.assignedTo }}</p>
+        </div>
+      </div>
+
+      <!-- <div class="mt-6">
+        <h3 class="text-lg font-semibold ">Additional Notes</h3>
+        <p>{{ leadData?.notes }}</p>
+      </div>
+    </div>
+
+    <div class="p-5 border-t flex justify-end">
+      <button  class="ml-4 bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition">Delete Lead</button>
+    </div> -->
+  </div>
 </div>
+

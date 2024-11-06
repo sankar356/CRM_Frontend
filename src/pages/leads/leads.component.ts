@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, HostListener, OnInit, Output } from '@angular/core';
 import { LeadsService } from './leads.service';
 import { TableComponent } from '../../shared/table/table.component';
 import { Router, RouterLink } from '@angular/router';
@@ -72,7 +72,13 @@ export class LeadsComponent implements OnInit {
   toggleDropdown(id: number) {
     this.isOpen = this.isOpen === id ? null : id;
     
-
+  }
+  @HostListener('document:click', ['$event'])
+  handleClickOutside(event: MouseEvent) {
+    const target = event.target as HTMLElement;
+    if (!target.closest('.dropdown-container')) {
+      this.isOpen = null;
+    }
   }
   toggleDrawer(leadId?: number) {
     this.isDrawerOpen = !this.isDrawerOpen;
@@ -87,7 +93,8 @@ export class LeadsComponent implements OnInit {
 
   editStaff(row: any) {
     console.log('Editing staff:', row);
-    this.router.navigate(['/staffs/edit', row.id]); // Navigate to the edit page
+    this.router.navigate(['/lead/edit_lead/', row.id]); // Navigate to the edit page
+    this.selectedLeadId = row || null
   }
 
   objectKeys(obj: any) {

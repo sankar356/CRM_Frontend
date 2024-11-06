@@ -1,12 +1,12 @@
 <!-- <app-table click="creatlead" (view)="viewStaff($event)"  add="Create Lead" [headers]="['Name', 'Email', 'Mobile','Website','Organization','jobTitle','status']" [data]="usersData"></app-table> -->
-<div class="drawer-end bg-gray-50 h-full">
-<section class=" dark:bg-gray-900 p-3 sm:p-5 ">
+<div class="drawer-end bg-gray-50 dark:bg-gray-900 h-full">
+<section class=" p-3 sm:p-5 ">
 <div class="flex items-center justify-between mb-5">
     <h1 class="text-3xl fade-in font-bold">Lead</h1>
     <button
     routerLink="creatlead"
     type="button"
-    class="w-full md:w-auto flex items-center justify-center py-2 px-4 text-sm font-medium text-white focus:outline-none bg-blue-600 rounded-lg border border-transparent hover:bg-blue-700 focus:z-10 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-800 dark:bg-blue-700 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-blue-600"
+    class="w-full md:w-auto flex items-center justify-center py-2 px-4 text-sm font-medium text-white focus:outline-none bg-blue-600 rounded-lg border border-transparent hover:bg-blue-700 focus:z-10 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-800 dark:bg-primary-100 dark:text-gray-50 dark:border-primary dark:hover:bg-blue-800"
 >
     Create Lead
 </button>
@@ -61,34 +61,47 @@
                             </td>
                             <td class="lead-data pt-2" style="width: 15%">
                                 <!-- Trigger for the dropdown menu -->
-                                <div class="relative inline-block">
-                                    <button (click)="toggleDropdown(row.id)" aria-controls="drawer-example" class="cursor-pointer">
+                                <div class="relative inline-block dropdown-container">
+                                    <button (click)="toggleDropdown(row.id)" aria-controls="drawer-example" class="cursor-pointer menu_button">
                                         <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
                                           </svg>
                                     </button>
-                                    <div *ngIf="isOpen === row.id" id="drawer-example" class="absolute right-0 z-10 w-48 bg-white rounded shadow-lg mt-1 divide-y divide-gray-200">
+                                    <div *ngIf="isOpen === row.id" id="drawer-example" class="absolute right-0 z-10 w-48  bg-gray-50 dark:bg-gray-900 rounded shadow-lg mt-1 divide-y divide-gray-200">
                                         <button (click)="viewStaff(row)" class=" w-full text-left py-2 px-4 hover:bg-gray-100">
                                             View
                                         </button>
-                                        <div [class]="isDrawerOpen ? 'w-full md:w-[800px]' : 'w-0'" aria-label="close sidebar" class="fixed top-0 right-0 h-full bg-gray-800 text-white transition-all duration-700 overflow-hidden">
+                                        <!-- <div [class]="isDrawerOpen ? 'w-full md:w-[800px]' : 'w-0'" aria-label="close sidebar" class="fixed top-0 right-0 h-full bg-gray-800 text-white transition-all duration-700 overflow-hidden"> -->
+                                            <div [class]="isDrawerOpen ? 'w-full sm:w-[320px] md:w-[400px] lg:w-[750px]' : 'w-0'" 
+                                            aria-label="close sidebar" 
+                                           class="fixed top-0 right-0 h-full bg-gray-200 text-gray-900 transition-all duration-700 overflow-hidden dark:bg-gray-800 dark:text-gray-100 border-l border-gray-200 dark:border-gray-600">
                                             <div class="p-4">
                                                 <!-- <h2 class="text-xl font-bold mb-4">Leads Information</h2> -->
                                                 <!-- Close button -->
-                                                <button (click)="toggleDrawer()" class="text-white text-right mb-2">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline-block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                                                    </svg>
-                                                </button>
+                                                <div class="flex content-center p-3 justify-between ">
+                                                    <button (click)="toggleDrawer()" class="dark:text-white text-gray-900 text-right mb-2">
+                                                        <!-- <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline-block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                                                        </svg> -->
+                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="h-6 w-6 inline-block" stroke="currentColor">
+                                                            <path fillRule="evenodd" d="M12.97 3.97a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 1 1-1.06-1.06l6.22-6.22H3a.75.75 0 0 1 0-1.5h16.19l-6.22-6.22a.75.75 0 0 1 0-1.06Z" clipRule="evenodd" />
+                                                        </svg>
+                                                        
+                                                    </button>
+                                                    <button class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition" (click)="editStaff(row)">
+                                                        Edit
+                                                    </button>
+                                                </div>
                                                 <!-- Drawer content goes here -->
-                                                <app-viewleads *ngIf="isDrawerOpen" []="selectedLeadId"></app-viewleads>
+                                                <app-viewleads *ngIf="isDrawerOpen" class="bg-gray-50 dark:bg-gray-900" [editId]="selectedLeadId"></app-viewleads>
                                             </div>
                                         </div>
-                                        <button class="w-full text-left py-2 px-4 hover:bg-gray-100" (click)="editStaff(row)">
+                                        <button (click)="editStaff(row)" class="w-full text-left py-2 px-4 hover:bg-gray-100" (click)="editStaff(row)">
                                             Edit
                                         </button>
                                     </div>
                                 </div>
+                                
                             </td>
                         </tr>
                         
