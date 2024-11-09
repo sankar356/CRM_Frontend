@@ -1,0 +1,7 @@
+{
+  "/api": {
+    "target": "https://313a-49-207-183-225.ngrok-free.app",
+    "secure": false,
+    "changeOrigin": true
+  }
+}
